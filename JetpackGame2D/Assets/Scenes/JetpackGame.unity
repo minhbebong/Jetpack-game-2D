@@ -398,7 +398,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 3.2
-  m_Depth: 0
+  m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 1523776342}
   - component: {fileID: 1523776341}
   - component: {fileID: 1523776344}
+  - component: {fileID: 1523776345}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -594,6 +595,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1523776345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523776340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb783cd0b1624fd68d625ffd8cca17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseObject: {fileID: 1735037757}
 --- !u!1 &1735037757
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,7 +670,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8629c0df829c948c78cf6c8f99e15ee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -676,7 +690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735037757}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.87, y: -1.97, z: 0}
+  m_LocalPosition: {x: -5.87, y: -3.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -696,7 +710,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e6a1da99e8d3e499b63a7a4372faf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jetpackForce: 10
+  forwardMovementSpeed: 3
+  jetpackForce: 75
 --- !u!50 &1735037761
 Rigidbody2D:
   serializedVersion: 4
@@ -5940,6 +5955,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2564860450234729307, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4195575839344061090, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.907057
