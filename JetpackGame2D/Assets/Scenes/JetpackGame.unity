@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardMovementSpeed: 3
-  jetpackForce: 75
+  jetpackForce: 20
 --- !u!50 &1735037761
 Rigidbody2D:
   serializedVersion: 4
@@ -5958,6 +5958,22 @@ PrefabInstance:
     - target: {fileID: 2564860450234729307, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564860450252691568, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1849823
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564860450252691568, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.1406
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564860450565318319, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.8413243
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564860450565318319, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.691
       objectReference: {fileID: 0}
     - target: {fileID: 4195575839344061090, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalScale.x
