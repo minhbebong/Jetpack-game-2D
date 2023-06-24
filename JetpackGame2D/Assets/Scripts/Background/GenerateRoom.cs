@@ -7,7 +7,7 @@ public class GenerateRoom : MonoBehaviour
     public GameObject[] availableRooms;
     public List<GameObject> currentRooms;
     public float screenWidthInPoints;
-    int countRoom = 0; 
+
 
 
     void Start()
