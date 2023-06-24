@@ -8,12 +8,13 @@ public class MouseController : MonoBehaviour
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
     private Rigidbody2D playerbody;
+    public ParallaxController parallax;
     // Start is called before the first frame update
     void Start()
     {
         playerbody = GetComponent<Rigidbody2D>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -22,7 +23,7 @@ public class MouseController : MonoBehaviour
         {
             playerbody.AddForce(new Vector2(0, jetpackForce));
         }
-        
+        parallax.offset = transform.position.x;
     }
 
     private void FixedUpdate()
@@ -30,5 +31,6 @@ public class MouseController : MonoBehaviour
         Vector3 pos = transform.position;
         pos.x += forwardMovementSpeed * Time.deltaTime;
         transform.position = pos;
+       
     }
 }
