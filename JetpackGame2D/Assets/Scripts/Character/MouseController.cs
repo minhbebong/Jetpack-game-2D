@@ -5,14 +5,30 @@ using UnityEngine;
 
 public class MouseController : MonoBehaviour
 {
+    private uint coins = 0;
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
     private Rigidbody2D playerbody;
     private bool isDead = false;
 
+    void CollectCoin(Collider2D coinCollider)
+    {
+        coins++;
+        Destroy(coinCollider.gameObject);
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
-        HitByLaser(collider);
+        //HitByLaser(collider);
+        if (collider.gameObject.CompareTag("Coins"))
+        {
+            CollectCoin(collider);
+        }
+        else
+        {
+            HitByLaser(collider);
+        }
+
     }
 
     void HitByLaser(Collider2D laserCollider)
