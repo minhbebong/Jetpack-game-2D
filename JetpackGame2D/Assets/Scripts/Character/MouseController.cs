@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class MouseController : MonoBehaviour
 {
+    public Text coinsCollectedLabel;
     private uint coins = 0;
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
@@ -15,6 +18,7 @@ public class MouseController : MonoBehaviour
     {
         coins++;
         Destroy(coinCollider.gameObject);
+        coinsCollectedLabel.text = coins.ToString();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
