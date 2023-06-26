@@ -13,12 +13,13 @@ public class MouseController : MonoBehaviour
     public float jetpackForce = 75f;
     private Rigidbody2D playerbody;
     private bool isDead = false;
+    public TextManager textManager;
+    
 
     void CollectCoin(Collider2D coinCollider)
     {
         coins++;
         Destroy(coinCollider.gameObject);
-        coinsCollectedLabel.text = coins.ToString();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -26,6 +27,7 @@ public class MouseController : MonoBehaviour
         //HitByLaser(collider);
         if (collider.gameObject.CompareTag("Coins"))
         {
+            textManager.IncreaseScore();
             CollectCoin(collider);
         }
         else
@@ -44,6 +46,7 @@ public class MouseController : MonoBehaviour
     void Start()
     {
         playerbody = GetComponent<Rigidbody2D>();
+        textManager = FindObjectOfType<TextManager>();
     }
 
     // Update is called once per frame
