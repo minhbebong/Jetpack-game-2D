@@ -854,6 +854,7 @@ MonoBehaviour:
   coinsCollectedLabel: {fileID: 0}
   forwardMovementSpeed: 7
   jetpackForce: 50
+  textManager: {fileID: 0}
 --- !u!50 &1735037761
 Rigidbody2D:
   serializedVersion: 4
@@ -1096,8 +1097,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableRooms:
+  - {fileID: 3550559020888591197, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
+  currentRooms:
   - {fileID: 989435387}
-  currentRooms: []
   screenWidthInPoints: 0
 --- !u!1 &1743297199
 GameObject:
@@ -6196,19 +6198,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3550559020298073346, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.426629
+      value: 2.2149842
       objectReference: {fileID: 0}
     - target: {fileID: 3550559020298073346, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.2957
+      value: -8.1877
       objectReference: {fileID: 0}
     - target: {fileID: 3550559020613399663, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalScale.x
-      value: 22.810034
+      value: 26.94464
       objectReference: {fileID: 0}
     - target: {fileID: 3550559020613399663, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7084
+      value: 0.1318
       objectReference: {fileID: 0}
     - target: {fileID: 3550559020888591194, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_RootOrder
@@ -6260,11 +6262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3550559021840558254, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalScale.x
-      value: 22.847715
+      value: 26.843218
       objectReference: {fileID: 0}
     - target: {fileID: 3550559021840558254, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7063
+      value: -0.0105
       objectReference: {fileID: 0}
     - target: {fileID: 3550559022065974387, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6276,11 +6278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3550559022110669552, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7197756
+      value: 1.7926941
       objectReference: {fileID: 0}
     - target: {fileID: 3550559022110669552, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.024
+      value: 9.1992
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d3d1f50b64f2414bbfe80cb2ff99a26, type: 3}
