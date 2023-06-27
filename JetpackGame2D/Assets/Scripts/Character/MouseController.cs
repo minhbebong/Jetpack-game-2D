@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ public class MouseController : MonoBehaviour
     private Rigidbody2D playerbody;
     private bool isDead = false;
     public TextManager textManager;
-    
+    public ParallaxController parallax;
 
     void CollectCoin(Collider2D coinCollider)
     {
@@ -82,6 +83,7 @@ public class MouseController : MonoBehaviour
         
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
+        parallax.offset = transform.position.x;
     }
 
     void UpdateGroundedStatus()

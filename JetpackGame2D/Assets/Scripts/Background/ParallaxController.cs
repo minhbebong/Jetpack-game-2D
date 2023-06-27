@@ -5,28 +5,27 @@ using UnityEngine.UIElements;
 
 public class ParallaxController : MonoBehaviour
 {
-    public SpriteRenderer parallaxBackground;
-    public SpriteRenderer parallaxForceground;
-    public float parallaxSpeed;
+    public Renderer background;
+    public Renderer foreground;
 
+    public float backgroundSpeed = 0.02f;
+    public float foregroundSpeed = 0.06f;
+
+    public float offset = 0;
+
+    // Use this for initialization
     void Start()
     {
-        
+
     }
 
+    // Update is called once per frame
     void Update()
     {
-      // Get the current position of the backgrounds
-    Vector3 pos1 = parallaxBackground.transform.position;
-        Vector3 pos2 = parallaxForceground.transform.position;
+        float backgroundOffset = offset * backgroundSpeed;
+        float foregroundOffset = offset * foregroundSpeed;
 
-        // Calculate the new position based on the parallax speed and time
-        float offset = Time.time * parallaxSpeed;
-        float newPos1 = pos1.x + offset;
-        float newPos2 = pos2.x + offset;
-
-        // Set the new position of the backgrounds
-        parallaxBackground.transform.position = new Vector3(newPos1, pos1.y, pos1.z);
-        parallaxForceground.transform.position = new Vector3(newPos2, pos2.y, pos2.z);
+        background.material.mainTextureOffset = new Vector2(backgroundOffset, 0);
+        background.material.mainTextureOffset = new Vector2(foregroundOffset, 0);
     }
 }
