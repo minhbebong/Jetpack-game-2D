@@ -10,6 +10,9 @@ public class ParallaxController : MonoBehaviour
     public float parallaxSpeed;
     internal float offset;
 
+    public Renderer background;
+    public Renderer foreground;
+
     void Start()
     {
         
