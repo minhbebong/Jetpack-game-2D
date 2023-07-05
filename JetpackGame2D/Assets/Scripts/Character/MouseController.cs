@@ -17,6 +17,7 @@ public class MouseController : MonoBehaviour
     public TextManager textManager;
     public Button restartButton;
     private bool isGrounded;
+    public ParallaxController parallax;
 
     public void RestartGame()
     {
@@ -94,6 +95,7 @@ public class MouseController : MonoBehaviour
         {
             restartButton.gameObject.SetActive(true);
         }
+        parallax.offset = transform.position.x;
     }
 
     void UpdateGroundedStatus()

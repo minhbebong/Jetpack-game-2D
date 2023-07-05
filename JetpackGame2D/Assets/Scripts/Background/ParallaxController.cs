@@ -8,6 +8,7 @@ public class ParallaxController : MonoBehaviour
     public SpriteRenderer parallaxBackground;
     public SpriteRenderer parallaxForceground;
     public float parallaxSpeed;
+    internal float offset;
 
     void Start()
     {
