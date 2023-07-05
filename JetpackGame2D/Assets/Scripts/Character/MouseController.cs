@@ -1,28 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
 
 
 
 public class MouseController : MonoBehaviour
 {
+    public Text coinsCollectedLabel;
     private uint coins = 0;
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
     private Rigidbody2D playerbody;
     private bool isDead = false;
     public TextManager textManager;
-    public Button restartButton;
-    private bool isGrounded;
     public ParallaxController parallax;
-
-    public void RestartGame()
-    {
-        SceneManager.LoadScene("RocketMouse");
-    }
 
     void CollectCoin(Collider2D coinCollider)
     {
@@ -48,7 +41,6 @@ public class MouseController : MonoBehaviour
     void HitByLaser(Collider2D laserCollider)
     {
         isDead = true;
-        //mouseAnimator.SetBool("isDead", true);
     }
 
     // Start is called before the first frame update
@@ -66,7 +58,7 @@ public class MouseController : MonoBehaviour
         {
             playerbody.AddForce(new Vector2(0, jetpackForce));
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -88,14 +80,9 @@ public class MouseController : MonoBehaviour
             newVelocity.x = forwardMovementSpeed;
             playerbody.velocity = newVelocity;
         }
-        
+
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
-        if (isDead && isGrounded)
-        {
-            restartButton.gameObject.SetActive(true);
-        }
-        
         parallax.offset = transform.position.x;
     }
 
