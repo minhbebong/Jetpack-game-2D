@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 
@@ -14,7 +16,13 @@ public class MouseController : MonoBehaviour
     private Rigidbody2D playerbody;
     private bool isDead = false;
     public TextManager textManager;
-    
+    public Button restartButton;
+    private bool isGrounded;
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("RocketMouse");
+    }
 
     void CollectCoin(Collider2D coinCollider)
     {
@@ -40,6 +48,7 @@ public class MouseController : MonoBehaviour
     void HitByLaser(Collider2D laserCollider)
     {
         isDead = true;
+        //mouseAnimator.SetBool("isDead", true);
     }
 
     // Start is called before the first frame update
@@ -82,6 +91,10 @@ public class MouseController : MonoBehaviour
         
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
+        if (isDead && isGrounded)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
     }
 
     void UpdateGroundedStatus()
