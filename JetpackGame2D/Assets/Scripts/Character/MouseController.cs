@@ -58,7 +58,7 @@ public class MouseController : MonoBehaviour
         {
             playerbody.AddForce(new Vector2(0, jetpackForce));
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -80,7 +80,7 @@ public class MouseController : MonoBehaviour
             newVelocity.x = forwardMovementSpeed;
             playerbody.velocity = newVelocity;
         }
-        
+
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
         parallax.offset = transform.position.x;
