@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class MouseController : MonoBehaviour
 {
-    public Text coinsCollectedLabel;
     private uint coins = 0;
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
