@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -17,6 +18,12 @@ public class MouseController : MonoBehaviour
     public TextManager textManager;
     public ParallaxController parallax;
 
+    public Button restartButton;
+    private bool isGrounded;
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("RocketMouse");
+    }
     void CollectCoin(Collider2D coinCollider)
     {
         coins++;
@@ -58,7 +65,7 @@ public class MouseController : MonoBehaviour
         {
             playerbody.AddForce(new Vector2(0, jetpackForce));
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -80,9 +87,13 @@ public class MouseController : MonoBehaviour
             newVelocity.x = forwardMovementSpeed;
             playerbody.velocity = newVelocity;
         }
-        
+
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
+        if (isDead && isGrounded)
+        {
+            restartButton.gameObject.SetActive(true);
+        }
         parallax.offset = transform.position.x;
     }
 
