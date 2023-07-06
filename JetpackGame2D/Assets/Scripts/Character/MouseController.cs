@@ -94,7 +94,7 @@ public class MouseController : MonoBehaviour
         {
             restartButton.gameObject.SetActive(true);
         }
-        parallax.offset = transform.position.x;
+      //  parallax.offset = transform.position.x;
     }
 
     void UpdateGroundedStatus()
