@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 
 public class MouseController : MonoBehaviour
@@ -17,7 +17,7 @@ public class MouseController : MonoBehaviour
 
     public ParticleSystem jetpack;
 
-    public Text coinsCollectedLabel;
+    public TextMeshProUGUI coinsCollectedLabel;
 
     private uint coins = 0;
 
@@ -33,42 +33,21 @@ public class MouseController : MonoBehaviour
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
 
+    public Button resButton;
+
     public void RestartGame()
     {
-        SceneManager.LoadScene("RocketMouse");
+        SceneManager.LoadScene("JetpackGame");
     }
     void CollectCoin(Collider2D coinCollider)
     {
         coins++;
+        coinsCollectedLabel.text = coins.ToString();
         Destroy(coinCollider.gameObject);
-        //AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
+        AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 
-    /*void OnTriggerEnter2D(Collider2D collider)
-    {
-        //HitByLaser(collider);
-        if (collider.gameObject.CompareTag("Coins"))
-        {
-            textManager.IncreaseScore();
-            CollectCoin(collider);
-        }
-        else
-        {
-            HitByLaser(collider);
-        }
-
-    }
-
-    void HitByLaser(Collider2D laserCollider)
-    {
-        if (!isDead)
-        {
-            laserCollider.gameObject.GetComponent<AudioSource>().Play();
-        }
-
-        isDead = true;
-        mouseAnimator.SetBool("dead", true);
-    }*/
+   
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -81,13 +60,22 @@ public class MouseController : MonoBehaviour
         {
             HitByLaser(collider);
         }
-
+        /*if (collider.gameObject.CompareTag("laser"))
+        {
+            AudioSource laserZap = collider.gameObject.GetComponent<AudioSource>();
+            laserZap.Play();
+        }*/
     }
 
     void HitByLaser(Collider2D laserCollider)
     {
+        if (!isDead)
+        {
+            laserCollider.gameObject.GetComponent<AudioSource>().Play();
+        }
         isDead = true;
         mouseAnimator.SetBool("isDead", true);
+        
     }
 
     // Start is called before the first frame update
@@ -112,6 +100,7 @@ public class MouseController : MonoBehaviour
         bool jetpackActive = Input.GetButton("Fire1");
         jetpackActive = jetpackActive && !isDead;
 
+        
         if (jetpackActive)
         {
             playerbody.AddForce(new Vector2(0, jetpackForce));
@@ -126,10 +115,14 @@ public class MouseController : MonoBehaviour
 
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
+        
+        
         if (isDead && isGrounded)
         {
-            restartButton.gameObject.SetActive(true);
+            resButton.gameObject.SetActive(true);
         }
+
+        AdjustFootstepsAndJetpackSound(jetpackActive);
         parallax.offset = transform.position.x;
     }
 
@@ -151,6 +144,20 @@ public class MouseController : MonoBehaviour
         else
         {
             jetpackEmission.rateOverTime = 75.0f;
+        }
+    }
+
+    void AdjustFootstepsAndJetpackSound(bool jetpackActive)
+    {
+        footstepsAudio.enabled = !isDead && isGrounded;
+        jetpackAudio.enabled = !isDead && !isGrounded;
+        if (jetpackActive)
+        {
+            jetpackAudio.volume = 1.0f;
+        }
+        else
+        {
+            jetpackAudio.volume = 0.5f;
         }
     }
 }
