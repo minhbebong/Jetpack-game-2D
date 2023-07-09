@@ -9,17 +9,27 @@ using UnityEngine.SceneManagement;
 
 public class MouseController : MonoBehaviour
 {
+    public Transform groundCheckTransform;
+    public LayerMask groundCheckLayerMask;
+
     public Text coinsCollectedLabel;
-    private uint coins = 0;
+
+    private int coins = 0;
+
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
     private Rigidbody2D playerbody;
     private bool isDead = false;
     public TextManager textManager;
     public ParallaxController parallax;
-
+    Animator animator;
     public Button restartButton;
     private bool isGrounded;
+
+    public AudioClip coinCollectSound;
+    public AudioSource jetpackAudio;
+    public AudioSource footstepsAudio;
+
     public void RestartGame()
     {
         SceneManager.LoadScene("RocketMouse");
@@ -28,6 +38,7 @@ public class MouseController : MonoBehaviour
     {
         coins++;
         Destroy(coinCollider.gameObject);
+        AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -47,7 +58,13 @@ public class MouseController : MonoBehaviour
 
     void HitByLaser(Collider2D laserCollider)
     {
+        if (!isDead)
+        {
+            laserCollider.gameObject.GetComponent<AudioSource>().Play();
+        }
+
         isDead = true;
+        animator.SetBool("dead", true);
     }
 
     // Start is called before the first frame update
@@ -55,17 +72,13 @@ public class MouseController : MonoBehaviour
     {
         playerbody = GetComponent<Rigidbody2D>();
         textManager = FindObjectOfType<TextManager>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool jetpackActive = Input.GetButton("Fire1");
-        if (jetpackActive)
-        {
-            playerbody.AddForce(new Vector2(0, jetpackForce));
-        }
-
+        
     }
 
     private void FixedUpdate()
@@ -99,11 +112,15 @@ public class MouseController : MonoBehaviour
 
     void UpdateGroundedStatus()
     {
-        // TODO: Implement your logic for updating grounded status here
+        isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayerMask);
+        animator.SetBool("grounded", isGrounded);
     }
 
     void AdjustJetpack(bool jetpackActive)
     {
-        // TODO: Implement your logic for adjusting the jetpack here
+        footstepsAudio.enabled = !isDead && isGrounded;
+
+        jetpackAudio.enabled = !isDead && !isGrounded;
+        jetpackAudio.volume = jetpackActive ? 1.0f : 0.5f;
     }
 }

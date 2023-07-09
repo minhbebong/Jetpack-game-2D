@@ -16,8 +16,6 @@ public class GenerateRoom : MonoBehaviour
         screenWidthInPoints = height * Camera.main.aspect;
     }
 
-
-
     void FixedUpdate()
     {
         GenerateRoomIfRequired();
@@ -43,15 +41,10 @@ public class GenerateRoom : MonoBehaviour
         List<GameObject> roomsToRemove = new List<GameObject>();
 
         bool addRooms = true;
-
         float playerX = transform.position.x;
-
         float removeRoomX = playerX - screenWidthInPoints;
-
         float addRoomX = playerX + screenWidthInPoints;
-
         float farthestRoomEndX = 0;
-
         foreach (var room in currentRooms)
         {
             float roomWidth = room.transform.Find("floor").localScale.x;
