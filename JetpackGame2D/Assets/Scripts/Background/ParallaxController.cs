@@ -11,7 +11,7 @@ public class ParallaxController : MonoBehaviour
     public float backgroundSpeed = 0.02f;
     public float foregroundSpeed = 0.06f;
 
-    public float offset = 0.0f;
+    public float offset = 0;
 
     // Use this for initialization
     void Start()

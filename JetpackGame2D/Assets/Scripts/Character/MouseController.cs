@@ -9,12 +9,17 @@ using UnityEngine.SceneManagement;
 
 public class MouseController : MonoBehaviour
 {
+
     public Transform groundCheckTransform;
+    private bool isGrounded;
     public LayerMask groundCheckLayerMask;
+    private Animator mouseAnimator;
+
+    public ParticleSystem jetpack;
 
     public Text coinsCollectedLabel;
 
-    private int coins = 0;
+    private uint coins = 0;
 
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
@@ -22,9 +27,7 @@ public class MouseController : MonoBehaviour
     private bool isDead = false;
     public TextManager textManager;
     public ParallaxController parallax;
-    Animator animator;
     public Button restartButton;
-    private bool isGrounded;
 
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
@@ -38,10 +41,10 @@ public class MouseController : MonoBehaviour
     {
         coins++;
         Destroy(coinCollider.gameObject);
-        AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
+        //AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    /*void OnTriggerEnter2D(Collider2D collider)
     {
         //HitByLaser(collider);
         if (collider.gameObject.CompareTag("Coins"))
@@ -64,7 +67,27 @@ public class MouseController : MonoBehaviour
         }
 
         isDead = true;
-        animator.SetBool("dead", true);
+        mouseAnimator.SetBool("dead", true);
+    }*/
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+
+        if (collider.gameObject.CompareTag("Coins"))
+        {
+            CollectCoin(collider);
+        }
+        else
+        {
+            HitByLaser(collider);
+        }
+
+    }
+
+    void HitByLaser(Collider2D laserCollider)
+    {
+        isDead = true;
+        mouseAnimator.SetBool("isDead", true);
     }
 
     // Start is called before the first frame update
@@ -72,7 +95,7 @@ public class MouseController : MonoBehaviour
     {
         playerbody = GetComponent<Rigidbody2D>();
         textManager = FindObjectOfType<TextManager>();
-        animator = GetComponent<Animator>();
+        mouseAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -113,14 +136,21 @@ public class MouseController : MonoBehaviour
     void UpdateGroundedStatus()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayerMask);
-        animator.SetBool("grounded", isGrounded);
+        
+        mouseAnimator.SetBool("isGrounded", isGrounded);
     }
 
     void AdjustJetpack(bool jetpackActive)
     {
-        footstepsAudio.enabled = !isDead && isGrounded;
-
-        jetpackAudio.enabled = !isDead && !isGrounded;
-        jetpackAudio.volume = jetpackActive ? 1.0f : 0.5f;
+        var jetpackEmission = jetpack.emission;
+        jetpackEmission.enabled = !isGrounded;
+        if (jetpackActive)
+        {
+            jetpackEmission.rateOverTime = 300.0f;
+        }
+        else
+        {
+            jetpackEmission.rateOverTime = 75.0f;
+        }
     }
 }

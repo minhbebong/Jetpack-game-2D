@@ -420,7 +420,7 @@ RectTransform:
   - {fileID: 894491926}
   - {fileID: 376555148}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -586,7 +586,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644533251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1129,8 +1129,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1457302695
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 8629c0df829c948c78cf6c8f99e15ee2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1176,9 +1176,10 @@ MonoBehaviour:
   groundCheckLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  jetpack: {fileID: 1765151838}
   coinsCollectedLabel: {fileID: 0}
   forwardMovementSpeed: 7
-  jetpackForce: 50
+  jetpackForce: 40
   textManager: {fileID: 0}
   parallax: {fileID: 853299650}
   restartButton: {fileID: 0}
@@ -1426,6 +1427,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b056a40150c4d4724a78045fea83ddea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableObjects:
+  - {fileID: 6310770187880985771, guid: 7b41c7ab1ed521b44a1a9c10136159e3, type: 3}
+  - {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
+  objects: []
+  objectsMinDistance: 5
+  objectsMaxDistance: 10
+  objectsMinY: -1.4
+  objectsMaxY: 1.4
+  objectsMinRotation: -45
+  objectsMaxRotation: 45
   availableRooms:
   - {fileID: 5270831802561824700, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
   currentRooms:
@@ -1659,9 +1670,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1457302695
+  m_SortingLayer: 4
+  m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -6506,7 +6517,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5270831802561824579, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5270831802561824579, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
       propertyPath: m_LocalPosition.x
