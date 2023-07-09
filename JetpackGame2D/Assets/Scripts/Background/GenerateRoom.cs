@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GenerateRoom : MonoBehaviour
 {
     public GameObject[] availableObjects;
     public List<GameObject> objects;
+    
 
     public float objectsMinDistance = 5.0f;
     public float objectsMaxDistance = 10.0f;
