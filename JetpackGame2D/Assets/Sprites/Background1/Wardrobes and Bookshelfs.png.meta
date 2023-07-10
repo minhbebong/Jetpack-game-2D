@@ -3,7 +3,7 @@ guid: 9f9d41ae524b430459b3f49e55a3b187
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -636,28 +637,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wardrobes and Bookshelfs_17: 60208442
-      Wardrobes and Bookshelfs_11: 1927629454
-      Wardrobes and Bookshelfs_14: -948344007
-      Wardrobes and Bookshelfs_12: -1728347869
+      Wardrobes and Bookshelfs_0: -1258452672
       Wardrobes and Bookshelfs_1: 330222502
-      Wardrobes and Bookshelfs_3: -509841409
-      Wardrobes and Bookshelfs_9: 1141975317
-      Wardrobes and Bookshelfs_2: 623179809
-      Wardrobes and Bookshelfs_7: 370269443
-      Wardrobes and Bookshelfs_15: 1234940018
-      Wardrobes and Bookshelfs_6: -382655965
-      Wardrobes and Bookshelfs_18: -1388347604
-      Wardrobes and Bookshelfs_20: -1533799363
-      Wardrobes and Bookshelfs_13: -398804132
-      Wardrobes and Bookshelfs_8: -1093606717
       Wardrobes and Bookshelfs_10: 73605940
+      Wardrobes and Bookshelfs_11: 1927629454
+      Wardrobes and Bookshelfs_12: -1728347869
+      Wardrobes and Bookshelfs_13: -398804132
+      Wardrobes and Bookshelfs_14: -948344007
+      Wardrobes and Bookshelfs_15: 1234940018
+      Wardrobes and Bookshelfs_16: -2139187780
+      Wardrobes and Bookshelfs_17: 60208442
+      Wardrobes and Bookshelfs_18: -1388347604
       Wardrobes and Bookshelfs_19: 80113095
+      Wardrobes and Bookshelfs_2: 623179809
+      Wardrobes and Bookshelfs_20: -1533799363
       Wardrobes and Bookshelfs_21: -1917941066
+      Wardrobes and Bookshelfs_3: -509841409
       Wardrobes and Bookshelfs_4: 1412412375
       Wardrobes and Bookshelfs_5: 85164213
-      Wardrobes and Bookshelfs_0: -1258452672
-      Wardrobes and Bookshelfs_16: -2139187780
+      Wardrobes and Bookshelfs_6: -382655965
+      Wardrobes and Bookshelfs_7: 370269443
+      Wardrobes and Bookshelfs_8: -1093606717
+      Wardrobes and Bookshelfs_9: 1141975317
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
