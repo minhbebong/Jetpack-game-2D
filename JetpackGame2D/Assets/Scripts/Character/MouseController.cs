@@ -4,17 +4,22 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 
 public class MouseController : MonoBehaviour
 {
+
     public Transform groundCheckTransform;
+    private bool isGrounded;
     public LayerMask groundCheckLayerMask;
+    private Animator mouseAnimator;
 
-    public Text coinsCollectedLabel;
+    public ParticleSystem jetpack;
 
-    private int coins = 0;
+    public TextMeshProUGUI coinsCollectedLabel;
+
+    private uint coins = 0;
 
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
@@ -22,38 +27,44 @@ public class MouseController : MonoBehaviour
     private bool isDead = false;
     public TextManager textManager;
     public ParallaxController parallax;
-    Animator animator;
     public Button restartButton;
-    private bool isGrounded;
 
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
 
+    public Button resButton;
+
     public void RestartGame()
     {
-        SceneManager.LoadScene("RocketMouse");
+        SceneManager.LoadScene("JetpackGame");
     }
     void CollectCoin(Collider2D coinCollider)
     {
         coins++;
+        coinsCollectedLabel.text = coins.ToString();
         Destroy(coinCollider.gameObject);
         AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 
+   
+
     void OnTriggerEnter2D(Collider2D collider)
     {
-        //HitByLaser(collider);
+
         if (collider.gameObject.CompareTag("Coins"))
         {
-            textManager.IncreaseScore();
             CollectCoin(collider);
         }
         else
         {
             HitByLaser(collider);
         }
-
+        /*if (collider.gameObject.CompareTag("laser"))
+        {
+            AudioSource laserZap = collider.gameObject.GetComponent<AudioSource>();
+            laserZap.Play();
+        }*/
     }
 
     void HitByLaser(Collider2D laserCollider)
@@ -62,9 +73,9 @@ public class MouseController : MonoBehaviour
         {
             laserCollider.gameObject.GetComponent<AudioSource>().Play();
         }
-
         isDead = true;
-        animator.SetBool("dead", true);
+        mouseAnimator.SetBool("isDead", true);
+        
     }
 
     // Start is called before the first frame update
@@ -72,7 +83,7 @@ public class MouseController : MonoBehaviour
     {
         playerbody = GetComponent<Rigidbody2D>();
         textManager = FindObjectOfType<TextManager>();
-        animator = GetComponent<Animator>();
+        mouseAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -89,6 +100,7 @@ public class MouseController : MonoBehaviour
         bool jetpackActive = Input.GetButton("Fire1");
         jetpackActive = jetpackActive && !isDead;
 
+        
         if (jetpackActive)
         {
             playerbody.AddForce(new Vector2(0, jetpackForce));
@@ -103,24 +115,49 @@ public class MouseController : MonoBehaviour
 
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
+        
+        
         if (isDead && isGrounded)
         {
-            restartButton.gameObject.SetActive(true);
+            resButton.gameObject.SetActive(true);
         }
-      //  parallax.offset = transform.position.x;
+
+        AdjustFootstepsAndJetpackSound(jetpackActive);
+        parallax.offset = transform.position.x;
     }
 
     void UpdateGroundedStatus()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayerMask);
-        animator.SetBool("grounded", isGrounded);
+        
+        mouseAnimator.SetBool("isGrounded", isGrounded);
     }
 
     void AdjustJetpack(bool jetpackActive)
     {
-        footstepsAudio.enabled = !isDead && isGrounded;
+        var jetpackEmission = jetpack.emission;
+        jetpackEmission.enabled = !isGrounded;
+        if (jetpackActive)
+        {
+            jetpackEmission.rateOverTime = 300.0f;
+        }
+        else
+        {
+            jetpackEmission.rateOverTime = 75.0f;
+        }
+    }
 
+    void AdjustFootstepsAndJetpackSound(bool jetpackActive)
+    {
+        footstepsAudio.enabled = !isDead && isGrounded;
         jetpackAudio.enabled = !isDead && !isGrounded;
-        jetpackAudio.volume = jetpackActive ? 1.0f : 0.5f;
+        if (jetpackActive)
+        {
+            jetpackAudio.volume = 1.0f;
+        }
+        else
+        {
+            jetpackAudio.volume = 0.5f;
+        }
     }
 }
