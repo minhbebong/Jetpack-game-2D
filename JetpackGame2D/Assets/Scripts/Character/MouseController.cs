@@ -32,9 +32,13 @@ public class MouseController : MonoBehaviour
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
-
+  
     public Button resButton;
 
+
+
+   
+   
     public void RestartGame()
     {
         SceneManager.LoadScene("JetpackGame");
@@ -51,20 +55,18 @@ public class MouseController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-
+        
         if (collider.gameObject.CompareTag("Coins"))
         {
             CollectCoin(collider);
         }
-        else
+        else if (collider.gameObject.CompareTag("missile"))
         {
-            HitByLaser(collider);
+            HitByMissile(collider);
         }
-        /*if (collider.gameObject.CompareTag("laser"))
-        {
-            AudioSource laserZap = collider.gameObject.GetComponent<AudioSource>();
-            laserZap.Play();
-        }*/
+        else
+            HitByLaser(collider);
+       
     }
 
     void HitByLaser(Collider2D laserCollider)
@@ -77,13 +79,24 @@ public class MouseController : MonoBehaviour
         mouseAnimator.SetBool("isDead", true);
         
     }
-
+    void HitByMissile(Collider2D missileCollider)
+    {  
+            if (!isDead)
+            {
+              //  missileCollider.gameObject.GetComponent<AudioSource>().Play();
+            
+        }
+            isDead = true;
+            mouseAnimator.SetBool("isDead", true);
+        }
+ 
     // Start is called before the first frame update
     void Start()
     {
         playerbody = GetComponent<Rigidbody2D>();
         textManager = FindObjectOfType<TextManager>();
         mouseAnimator = GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame
@@ -98,6 +111,7 @@ public class MouseController : MonoBehaviour
         //pos.x += forwardMovementSpeed * Time.deltaTime;
         //transform.position = pos;
         bool jetpackActive = Input.GetButton("Fire1");
+        
         jetpackActive = jetpackActive && !isDead;
 
         
@@ -111,6 +125,7 @@ public class MouseController : MonoBehaviour
             Vector2 newVelocity = playerbody.velocity;
             newVelocity.x = forwardMovementSpeed;
             playerbody.velocity = newVelocity;
+          
         }
 
         UpdateGroundedStatus();
@@ -160,4 +175,5 @@ public class MouseController : MonoBehaviour
             jetpackAudio.volume = 0.5f;
         }
     }
+    
 }
