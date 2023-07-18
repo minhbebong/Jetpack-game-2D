@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coins
   - laser
+  - missile
   layers:
   - Default
   - TransparentFX
