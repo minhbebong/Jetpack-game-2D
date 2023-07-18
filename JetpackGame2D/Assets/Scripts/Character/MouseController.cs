@@ -32,13 +32,13 @@ public class MouseController : MonoBehaviour
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
-  
+
     public Button resButton;
 
 
 
-   
-   
+
+
     public void RestartGame()
     {
         SceneManager.LoadScene("JetpackGame");
@@ -51,11 +51,11 @@ public class MouseController : MonoBehaviour
         AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 
-   
+
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        
+
         if (collider.gameObject.CompareTag("Coins"))
         {
             CollectCoin(collider);
@@ -66,7 +66,7 @@ public class MouseController : MonoBehaviour
         }
         else
             HitByLaser(collider);
-       
+
     }
 
     void HitByLaser(Collider2D laserCollider)
@@ -77,32 +77,42 @@ public class MouseController : MonoBehaviour
         }
         isDead = true;
         mouseAnimator.SetBool("isDead", true);
-        
+
+        // D?ng âm thanh jetpack
+        jetpackAudio.Stop();
+        // D?ng âm thanh footsteps
+        footstepsAudio.Stop();
+
     }
     void HitByMissile(Collider2D missileCollider)
-    {  
-            if (!isDead)
-            {
-              //  missileCollider.gameObject.GetComponent<AudioSource>().Play();
-            
+    {
+        if (!isDead)
+        {
+            //  missileCollider.gameObject.GetComponent<AudioSource>().Play();
+
         }
-            isDead = true;
-            mouseAnimator.SetBool("isDead", true);
-        }
- 
+        isDead = true;
+        mouseAnimator.SetBool("isDead", true);
+
+        // D?ng âm thanh jetpack
+        jetpackAudio.Stop();
+        // D?ng âm thanh footsteps
+        footstepsAudio.Stop();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         playerbody = GetComponent<Rigidbody2D>();
         textManager = FindObjectOfType<TextManager>();
         mouseAnimator = GetComponent<Animator>();
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -111,10 +121,10 @@ public class MouseController : MonoBehaviour
         //pos.x += forwardMovementSpeed * Time.deltaTime;
         //transform.position = pos;
         bool jetpackActive = Input.GetButton("Fire1");
-        
+
         jetpackActive = jetpackActive && !isDead;
 
-        
+
         if (jetpackActive)
         {
             playerbody.AddForce(new Vector2(0, jetpackForce));
@@ -125,13 +135,13 @@ public class MouseController : MonoBehaviour
             Vector2 newVelocity = playerbody.velocity;
             newVelocity.x = forwardMovementSpeed;
             playerbody.velocity = newVelocity;
-          
+
         }
 
         UpdateGroundedStatus();
         AdjustJetpack(jetpackActive);
-        
-        
+
+
         if (isDead && isGrounded)
         {
             resButton.gameObject.SetActive(true);
@@ -144,7 +154,7 @@ public class MouseController : MonoBehaviour
     void UpdateGroundedStatus()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayerMask);
-        
+
         mouseAnimator.SetBool("isGrounded", isGrounded);
     }
 
@@ -166,14 +176,22 @@ public class MouseController : MonoBehaviour
     {
         footstepsAudio.enabled = !isDead && isGrounded;
         jetpackAudio.enabled = !isDead && !isGrounded;
-        if (jetpackActive)
+        // N?u nhân v?t ?ã ch?t, d?ng âm thanh jetpack
+        if (isDead)
         {
-            jetpackAudio.volume = 1.0f;
+            jetpackAudio.Stop();
         }
         else
         {
-            jetpackAudio.volume = 0.5f;
+            if (jetpackActive)
+            {
+                jetpackAudio.volume = 1.0f;
+            }
+            else
+            {
+                jetpackAudio.volume = 0.5f;
+            }
         }
+
     }
-    
 }
