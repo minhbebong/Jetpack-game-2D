@@ -34,6 +34,8 @@ public class GenerateRoom : MonoBehaviour
     void FixedUpdate()
     {
         GenerateRoomIfRequired();
+
+        GenerateObjectsIfRequired();
     }
 
     void AddRoom(float farhtestRoomEndX)
