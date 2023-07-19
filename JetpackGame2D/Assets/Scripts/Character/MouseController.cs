@@ -9,7 +9,6 @@ using TMPro;
 
 public class MouseController : MonoBehaviour
 {
-
     public Transform groundCheckTransform;
     private bool isGrounded;
     public LayerMask groundCheckLayerMask;
@@ -24,11 +23,12 @@ public class MouseController : MonoBehaviour
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
     private Rigidbody2D playerbody;
-    private bool isDead = false;
+    
     public TextManager textManager;
     public ParallaxController parallax;
     public Button restartButton;
 
+    private bool isDead = false;
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
@@ -41,6 +41,10 @@ public class MouseController : MonoBehaviour
 
     public void RestartGame()
     {
+        // D?ng âm thanh jetpack
+        jetpackAudio.Pause();
+        // D?ng âm thanh footsteps
+        footstepsAudio.Pause();
         SceneManager.LoadScene("JetpackGame");
     }
     void CollectCoin(Collider2D coinCollider)
@@ -79,9 +83,9 @@ public class MouseController : MonoBehaviour
         mouseAnimator.SetBool("isDead", true);
 
         // D?ng âm thanh jetpack
-        jetpackAudio.Stop();
+        jetpackAudio.Pause();
         // D?ng âm thanh footsteps
-        footstepsAudio.Stop();
+        footstepsAudio.Pause();
 
     }
     void HitByMissile(Collider2D missileCollider)
@@ -95,9 +99,9 @@ public class MouseController : MonoBehaviour
         mouseAnimator.SetBool("isDead", true);
 
         // D?ng âm thanh jetpack
-        jetpackAudio.Stop();
+        jetpackAudio.Pause();
         // D?ng âm thanh footsteps
-        footstepsAudio.Stop();
+        footstepsAudio.Pause();
     }
 
     // Start is called before the first frame update
@@ -120,6 +124,7 @@ public class MouseController : MonoBehaviour
         //Vector3 pos = transform.position;
         //pos.x += forwardMovementSpeed * Time.deltaTime;
         //transform.position = pos;
+        parallax.offset = transform.position.x;
         bool jetpackActive = Input.GetButton("Fire1");
 
         jetpackActive = jetpackActive && !isDead;
@@ -174,12 +179,12 @@ public class MouseController : MonoBehaviour
 
     void AdjustFootstepsAndJetpackSound(bool jetpackActive)
     {
-        footstepsAudio.enabled = !isDead && isGrounded;
+        footstepsAudio.enabled = !isDead && !isGrounded;
         jetpackAudio.enabled = !isDead && !isGrounded;
         // N?u nhân v?t ?ã ch?t, d?ng âm thanh jetpack
         if (isDead)
         {
-            jetpackAudio.Stop();
+            jetpackAudio.Pause();
         }
         else
         {
