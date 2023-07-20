@@ -9,7 +9,8 @@ public class ObjectpoolingMissile : MonoBehaviour
     public Transform player;
     private List<GameObject> missilePool;
 
-    public float spawnInterval = 2f; // Th?i gian gi?a m?i l?n xu?t hi?n missile
+    public float spawnInterval = 10f; // Th?i gian gi?a m?i l?n xu?t hi?n missile
+    private int currentMissileIndex = 0; // Keep track of the current missile index to spawn
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class ObjectpoolingMissile : MonoBehaviour
 
     private void SpawnMissile()
     {
-        // Find an inactive missile from the pool
+        // Find the next inactive missile from the pool
         GameObject missile = GetInactiveMissile();
 
         if (missile != null)
@@ -44,25 +45,23 @@ public class ObjectpoolingMissile : MonoBehaviour
             missile.SetActive(true);
         }
     }
-
     private GameObject GetInactiveMissile()
     {
         // Find an inactive missile from the pool
         for (int i = 0; i < missilePool.Count; i++)
         {
-            if (!missilePool[i].activeInHierarchy)
+            int indexToCheck = (currentMissileIndex + i) % missilePool.Count; // Wrap around to the beginning if necessary
+            if (!missilePool[indexToCheck].activeInHierarchy)
             {
-                return missilePool[i];
+                currentMissileIndex = (indexToCheck + 1) % missilePool.Count; // Set the next index for the next missile spawn
+                return missilePool[indexToCheck];
             }
         }
 
-        // If no inactive missiles are found, create a new one and add it to the pool
-        GameObject newMissile = Instantiate(missilePrefab);
-        newMissile.SetActive(false);
-        missilePool.Add(newMissile);
-
-        return newMissile;
+        // If no inactive missiles are found, return null
+        return null;
     }
 }
-    
+
+
 

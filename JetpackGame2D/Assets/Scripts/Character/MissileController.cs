@@ -20,6 +20,10 @@ public class MissileController : MonoBehaviour
     // Update is called once per frame
     public void FixedUpdate()
     {
+        if (!missileRenderer.isVisible)
+        {
+            DeactivateMissile();
+        }
         if (missileRenderer.isVisible)
         {
             // Calculate the direction from right to left
@@ -36,5 +40,10 @@ public class MissileController : MonoBehaviour
         }
 
     }
-   
+    private void DeactivateMissile()
+    {
+       
+        target = null;
+        gameObject.SetActive(false);
+    }
 }
