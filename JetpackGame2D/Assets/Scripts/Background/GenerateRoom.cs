@@ -20,10 +20,11 @@ public class GenerateRoom : MonoBehaviour
 
 
     public GameObject[] availableRooms;
+    public GameObject[] availableHouses;
     public List<GameObject> currentRooms;
     public float screenWidthInPoints;
-    int countRoom = 0; 
 
+  
 
     void Start()
     {
@@ -122,7 +123,7 @@ public class GenerateRoom : MonoBehaviour
         List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in objects)
         {
-            if (obj != null && obj.activeSelf) // Ki?m tra xem ??i t??ng có t?n t?i và còn ?ang ho?t ??ng không
+            if (obj != null && obj.activeSelf) // Ki?m tra xem ??i t??ng cï¿½ t?n t?i vï¿½ cï¿½n ?ang ho?t ??ng khï¿½ng
             {
                 float objX = obj.transform.position.x;
                 farthestObjectX = Mathf.Max(farthestObjectX, objX);
@@ -134,7 +135,7 @@ public class GenerateRoom : MonoBehaviour
             }
             else
             {
-                // N?u ??i t??ng ?ã b? h?y ho?c không ho?t ??ng, hãy lo?i b? kh?i danh sách
+                // N?u ??i t??ng ?ï¿½ b? h?y ho?c khï¿½ng ho?t ??ng, hï¿½y lo?i b? kh?i danh sï¿½ch
                 objectsToRemove.Add(obj);
             }
         }
@@ -142,7 +143,7 @@ public class GenerateRoom : MonoBehaviour
         foreach (var obj in objectsToRemove)
         {
             objects.Remove(obj);
-            // S? d?ng Destroy() ch? cho các GameObject t?n t?i trong th?i gian ch?y
+            // S? d?ng Destroy() ch? cho cï¿½c GameObject t?n t?i trong th?i gian ch?y
             if (obj != null && obj is GameObject)
             {
                 Destroy(obj);
