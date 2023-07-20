@@ -114,32 +114,41 @@ public class GenerateRoom : MonoBehaviour
 
     void GenerateObjectsIfRequired()
     {
-        
         float playerX = transform.position.x;
         float removeObjectsX = playerX - screenWidthInPoints;
         float addObjectX = playerX + screenWidthInPoints;
         float farthestObjectX = 0;
-        
+
         List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in objects)
         {
-            
-            float objX = obj.transform.position.x;
-            
-            farthestObjectX = Mathf.Max(farthestObjectX, objX);
-            
-            if (objX < removeObjectsX)
+            if (obj != null && obj.activeSelf) // Ki?m tra xem ??i t??ng có t?n t?i và còn ?ang ho?t ??ng không
             {
+                float objX = obj.transform.position.x;
+                farthestObjectX = Mathf.Max(farthestObjectX, objX);
+
+                if (objX < removeObjectsX)
+                {
+                    objectsToRemove.Add(obj);
+                }
+            }
+            else
+            {
+                // N?u ??i t??ng ?ã b? h?y ho?c không ho?t ??ng, hãy lo?i b? kh?i danh sách
                 objectsToRemove.Add(obj);
             }
         }
-        
+
         foreach (var obj in objectsToRemove)
         {
             objects.Remove(obj);
-            Destroy(obj);
+            // S? d?ng Destroy() ch? cho các GameObject t?n t?i trong th?i gian ch?y
+            if (obj != null && obj is GameObject)
+            {
+                Destroy(obj);
+            }
         }
-       
+
         if (farthestObjectX < addObjectX)
         {
             AddObject(farthestObjectX);

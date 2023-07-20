@@ -14,10 +14,6 @@ public class PauseMenu : MonoBehaviour
     {
         PauseMenuPanel.SetActive(true);
         Time.timeScale = 0f;
-        // D?ng âm thanh jetpack
-        jetpackAudio.Pause();
-        // D?ng âm thanh footsteps
-        footstepsAudio.Pause();
     }
 
     public void Resume()
@@ -32,5 +28,9 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("JetpackGame");
     }
 
-
+    public void Home()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Start Scene");
+    }
 }
