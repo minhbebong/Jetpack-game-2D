@@ -123,12 +123,18 @@ public class GenerateRoom : MonoBehaviour
         List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in objects)
         {
-            
-            float objX = obj.transform.position.x;
-            
-            farthestObjectX = Mathf.Max(farthestObjectX, objX);
-            
-            if (objX < removeObjectsX)
+            if(obj != null) // Ki?m tra xem ??i t??ng có t?n t?i hay ?ã b? h?y ch?a
+            {
+                float objX = obj.transform.position.x;
+
+                farthestObjectX = Mathf.Max(farthestObjectX, objX);
+
+                if (objX < removeObjectsX)
+                {
+                    objectsToRemove.Add(obj);
+                }
+            }
+            else // N?u ??i t??ng ?ã b? h?y, hãy lo?i b? kh?i danh sách
             {
                 objectsToRemove.Add(obj);
             }
@@ -137,7 +143,10 @@ public class GenerateRoom : MonoBehaviour
         foreach (var obj in objectsToRemove)
         {
             objects.Remove(obj);
-            Destroy(obj);
+            if(obj != null)
+            {
+                Destroy(obj);// H?y ??i t??ng ch? khi nó t?n t?i
+            }            
         }
        
         if (farthestObjectX < addObjectX)
