@@ -8,7 +8,9 @@ public class ObjectpoolingMissile : MonoBehaviour
     public int poolSize = 3;
     public Transform player;
     private List<GameObject> missilePool;
-  
+
+    public float spawnInterval = 2f; // Th?i gian gi?a m?i l?n xu?t hi?n missile
+
     private void Start()
     {
         missilePool = new List<GameObject>();
@@ -22,7 +24,7 @@ public class ObjectpoolingMissile : MonoBehaviour
         }
 
         // Spawn the missiles after a delay
-        InvokeRepeating("SpawnMissile", 5f, 5f);
+        InvokeRepeating("SpawnMissile", spawnInterval, spawnInterval);
     }
 
     private void SpawnMissile()

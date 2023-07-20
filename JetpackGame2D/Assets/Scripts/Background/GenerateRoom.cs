@@ -114,19 +114,17 @@ public class GenerateRoom : MonoBehaviour
 
     void GenerateObjectsIfRequired()
     {
-        
         float playerX = transform.position.x;
         float removeObjectsX = playerX - screenWidthInPoints;
         float addObjectX = playerX + screenWidthInPoints;
         float farthestObjectX = 0;
-        
+
         List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in objects)
         {
-            if(obj != null) // Ki?m tra xem ??i t??ng có t?n t?i hay ?ã b? h?y ch?a
+            if (obj != null && obj.activeSelf) // Ki?m tra xem ??i t??ng có t?n t?i và còn ?ang ho?t ??ng không
             {
                 float objX = obj.transform.position.x;
-
                 farthestObjectX = Mathf.Max(farthestObjectX, objX);
 
                 if (objX < removeObjectsX)
@@ -134,21 +132,23 @@ public class GenerateRoom : MonoBehaviour
                     objectsToRemove.Add(obj);
                 }
             }
-            else // N?u ??i t??ng ?ã b? h?y, hãy lo?i b? kh?i danh sách
+            else
             {
+                // N?u ??i t??ng ?ã b? h?y ho?c không ho?t ??ng, hãy lo?i b? kh?i danh sách
                 objectsToRemove.Add(obj);
             }
         }
-        
+
         foreach (var obj in objectsToRemove)
         {
             objects.Remove(obj);
-            if(obj != null)
+            // S? d?ng Destroy() ch? cho các GameObject t?n t?i trong th?i gian ch?y
+            if (obj != null && obj is GameObject)
             {
-                Destroy(obj);// H?y ??i t??ng ch? khi nó t?n t?i
-            }            
+                Destroy(obj);
+            }
         }
-       
+
         if (farthestObjectX < addObjectX)
         {
             AddObject(farthestObjectX);
