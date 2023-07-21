@@ -2329,7 +2329,6 @@ MonoBehaviour:
   poolSize: 5
   player: {fileID: 1735037759}
   spawnInterval: 4
-
 --- !u!1 &1735037757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,10 +2714,9 @@ MonoBehaviour:
   availableRooms:
   - {fileID: 5270831802561824700, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
   - {fileID: 5270831802561824700, guid: 71ff89677746cb441afdfac4191a682c, type: 3}
-  - {fileID: 5270831802561824700, guid: 71ff89677746cb441afdfac4191a682c, type: 3}
+  - {fileID: 5270831802561824700, guid: e3bf3f49efee6ab409b73885f669a25f, type: 3}
+  - {fileID: 5270831802561824700, guid: 71335892b42f3cb4e8f54a42c37e470f, type: 3}
   availableHouses: []
-  currentRooms:
-  - {fileID: 1093695785}
   screenWidthInPoints: 0
 --- !u!95 &1735037766
 Animator:
