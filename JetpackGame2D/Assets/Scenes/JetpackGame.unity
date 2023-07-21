@@ -2328,7 +2328,8 @@ MonoBehaviour:
   missilePrefab: {fileID: 1781718269405116491, guid: 58678c0902f6645189738b4bb7ddd6a6, type: 3}
   poolSize: 5
   player: {fileID: 1735037759}
-  spawnInterval: 15
+  spawnInterval: 4
+
 --- !u!1 &1735037757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,8 +2714,11 @@ MonoBehaviour:
   objectsMaxRotation: 45
   availableRooms:
   - {fileID: 5270831802561824700, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
-  availableHouses:
-  - {fileID: 5863381276688362843, guid: cc23a90592e2140b1987ea8edb548224, type: 3}
+  - {fileID: 5270831802561824700, guid: 71ff89677746cb441afdfac4191a682c, type: 3}
+  - {fileID: 5270831802561824700, guid: 71ff89677746cb441afdfac4191a682c, type: 3}
+  availableHouses: []
+  currentRooms:
+  - {fileID: 1093695785}
   screenWidthInPoints: 0
 --- !u!95 &1735037766
 Animator:
