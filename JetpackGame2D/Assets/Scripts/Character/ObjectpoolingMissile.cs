@@ -9,7 +9,7 @@ public class ObjectpoolingMissile : MonoBehaviour
     public Transform player;
     private List<GameObject> missilePool;
 
-    public float spawnInterval = 10f; // Th?i gian gi?a m?i l?n xu?t hi?n missile
+    public float spawnInterval = 2f; // Th?i gian gi?a m?i l?n xu?t hi?n missile
     private int currentMissileIndex = 0; // Keep track of the current missile index to spawn
 
     private void Start()
