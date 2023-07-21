@@ -35,11 +35,11 @@ public class MouseController : MonoBehaviour
     public AudioClip explosion;
     public Button resButton;
     public GameObject explosionPrefab;
-
-
-
-
-    public void RestartGame()
+    public GameObject[] playerPrefabs;
+    int characterIndex;
+    public static Vector2 lastCheckPointPos = new Vector2(-3, 0);
+   
+        public void RestartGame()
     {
         // D?ng �m thanh jetpack
         jetpackAudio.Pause();
