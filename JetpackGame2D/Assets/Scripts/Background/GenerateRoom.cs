@@ -9,11 +9,11 @@ public class GenerateRoom : MonoBehaviour
     public List<GameObject> objects;
     
 
-    public float objectsMinDistance = 150.0f;
-    public float objectsMaxDistance = 300.0f;
+    public float objectsMinDistance = 5.0f;
+    public float objectsMaxDistance = 10.0f;
 
-    public float objectsMinY = -114.0f;
-    public float objectsMaxY = 114.0f;
+    public float objectsMinY = -1.4f;
+    public float objectsMaxY = 1.4f;
 
     public float objectsMinRotation = -45.0f;
     public float objectsMaxRotation = 45.0f;
@@ -22,8 +22,7 @@ public class GenerateRoom : MonoBehaviour
     public GameObject[] availableRooms;
     public List<GameObject> currentRooms;
     public float screenWidthInPoints;
-    public int countRoom = 0;
-    
+    int countRoom = 0; 
 
 
     void Start()
@@ -98,42 +97,21 @@ public class GenerateRoom : MonoBehaviour
 
     void AddObject(float lastObjectX)
     {
+        //1
         int randomIndex = Random.Range(0, availableObjects.Length);
+        //2
         GameObject obj = (GameObject)Instantiate(availableObjects[randomIndex]);
-
+        //3
         float objectPositionX = lastObjectX + Random.Range(objectsMinDistance, objectsMaxDistance);
-        float objectPositionY = Random.Range(objectsMinY, objectsMaxY);
-        Vector3 objectPosition = new Vector3(objectPositionX, objectPositionY, 0);
-
-        while (IsOverlapping(objectPosition))
-        {
-            objectPositionX += Random.Range(objectsMinDistance, objectsMaxDistance);
-            objectPosition = new Vector3(objectPositionX, objectPositionY, 0);
-        }
-
-        obj.transform.position = objectPosition;
-
+        float randomY = Random.Range(objectsMinY, objectsMaxY);
+        obj.transform.position = new Vector3(objectPositionX, randomY, 0);
+        //4
         float rotation = Random.Range(objectsMinRotation, objectsMaxRotation);
         obj.transform.rotation = Quaternion.Euler(Vector3.forward * rotation);
-
+        //5
         objects.Add(obj);
     }
 
-    bool IsOverlapping(Vector3 position)
-    {
-        foreach (var obj in objects)
-        {
-            if (obj != null && obj.activeSelf)
-            {
-                float distance = Vector3.Distance(position, obj.transform.position);
-                if (distance < objectsMinDistance)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
     void GenerateObjectsIfRequired()
     {
         float playerX = transform.position.x;
