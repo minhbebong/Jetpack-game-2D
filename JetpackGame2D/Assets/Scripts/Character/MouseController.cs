@@ -34,16 +34,16 @@ public class MouseController : MonoBehaviour
     public AudioSource footstepsAudio;
 
     public Button resButton;
-
+    public GameObject explosionPrefab;
 
 
 
 
     public void RestartGame()
     {
-        // D?ng âm thanh jetpack
+        // D?ng ï¿½m thanh jetpack
         jetpackAudio.Pause();
-        // D?ng âm thanh footsteps
+        // D?ng ï¿½m thanh footsteps
         footstepsAudio.Pause();
         SceneManager.LoadScene("JetpackGame");
     }
@@ -82,9 +82,9 @@ public class MouseController : MonoBehaviour
         isDead = true;
         mouseAnimator.SetBool("isDead", true);
 
-        // D?ng âm thanh jetpack
+        // D?ng ï¿½m thanh jetpack
         jetpackAudio.Pause();
-        // D?ng âm thanh footsteps
+        // D?ng ï¿½m thanh footsteps
         footstepsAudio.Pause();
 
     }
@@ -98,12 +98,26 @@ public class MouseController : MonoBehaviour
         isDead = true;
         mouseAnimator.SetBool("isDead", true);
 
-        // D?ng âm thanh jetpack
         jetpackAudio.Pause();
-        // D?ng âm thanh footsteps
+        
         footstepsAudio.Pause();
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            StartCoroutine(HideAfterDelay(explosionPrefab,1f));
+        }
+        
     }
+    private IEnumerator HideAfterDelay(GameObject explosionObject, float delayTime)
+    {
+        // Wait for the specified delay time
+        yield return new WaitForSeconds(delayTime);
 
+        if (explosionObject != null)
+        {
+            explosionObject.SetActive(false);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -181,7 +195,7 @@ public class MouseController : MonoBehaviour
     {
         footstepsAudio.enabled = !isDead && !isGrounded;
         jetpackAudio.enabled = !isDead && !isGrounded;
-        // N?u nhân v?t ?ã ch?t, d?ng âm thanh jetpack
+        // N?u nhï¿½n v?t ?ï¿½ ch?t, d?ng ï¿½m thanh jetpack
         if (isDead)
         {
             jetpackAudio.Pause();

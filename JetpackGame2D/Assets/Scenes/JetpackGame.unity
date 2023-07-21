@@ -2449,6 +2449,7 @@ MonoBehaviour:
   jetpackAudio: {fileID: 1735037763}
   footstepsAudio: {fileID: 1735037764}
   resButton: {fileID: 2031416019}
+  explosionPrefab: {fileID: 2164529177619330190, guid: 981e8a396fc8b4148b3f89fc25419bc1, type: 3}
 --- !u!50 &1735037761
 Rigidbody2D:
   serializedVersion: 4
