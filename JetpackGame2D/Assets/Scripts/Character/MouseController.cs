@@ -32,7 +32,7 @@ public class MouseController : MonoBehaviour
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
-
+    public AudioClip explosion;
     public Button resButton;
     public GameObject explosionPrefab;
 
@@ -92,7 +92,7 @@ public class MouseController : MonoBehaviour
     {
         if (!isDead)
         {
-            //  missileCollider.gameObject.GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(explosion, transform.position);
 
         }
         isDead = true;
@@ -104,20 +104,12 @@ public class MouseController : MonoBehaviour
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            StartCoroutine(HideAfterDelay(explosionPrefab,1f));
+            
+
         }
         
     }
-    private IEnumerator HideAfterDelay(GameObject explosionObject, float delayTime)
-    {
-        // Wait for the specified delay time
-        yield return new WaitForSeconds(delayTime);
-
-        if (explosionObject != null)
-        {
-            explosionObject.SetActive(false);
-        }
-    }
+  
     // Start is called before the first frame update
     void Start()
     {

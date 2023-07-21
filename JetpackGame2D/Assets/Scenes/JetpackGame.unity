@@ -2306,7 +2306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628207219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.05, y: 1.28, z: -1.0904307}
+  m_LocalPosition: {x: 8.77, y: 0.91, z: -1.0904307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2448,6 +2448,7 @@ MonoBehaviour:
   coinCollectSound: {fileID: 8300000, guid: 6ce0f16f5f3be8544bc981f9119a2514, type: 3}
   jetpackAudio: {fileID: 1735037763}
   footstepsAudio: {fileID: 1735037764}
+  explosion: {fileID: 8300000, guid: 8ebcbc42ab8b04b739096b0b4f3bbd23, type: 3}
   resButton: {fileID: 2031416019}
   explosionPrefab: {fileID: 2164529177619330190, guid: 981e8a396fc8b4148b3f89fc25419bc1, type: 3}
 --- !u!50 &1735037761
@@ -7786,11 +7787,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 189202910148775008, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.16
+      value: 5.17
       objectReference: {fileID: 0}
     - target: {fileID: 189202910148775008, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.56
+      value: -1.74
       objectReference: {fileID: 0}
     - target: {fileID: 772139628923723437, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
       propertyPath: m_LocalPosition.x
