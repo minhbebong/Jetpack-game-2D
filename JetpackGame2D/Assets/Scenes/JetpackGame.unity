@@ -2328,7 +2328,7 @@ MonoBehaviour:
   missilePrefab: {fileID: 1781718269405116491, guid: 58678c0902f6645189738b4bb7ddd6a6, type: 3}
   poolSize: 5
   player: {fileID: 1735037759}
-  spawnInterval: 2
+  spawnInterval: 15
 --- !u!1 &1735037757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,6 +2451,9 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: 8ebcbc42ab8b04b739096b0b4f3bbd23, type: 3}
   resButton: {fileID: 2031416019}
   explosionPrefab: {fileID: 2164529177619330190, guid: 981e8a396fc8b4148b3f89fc25419bc1, type: 3}
+  playerPrefabs:
+  - {fileID: 1724184581521701220, guid: 044f5e0610f164732a4f41dfb9fbe66c, type: 3}
+  - {fileID: 30275252287300550, guid: d7c82c0e6b1f34d1b9a2d381dbda29e2, type: 3}
 --- !u!50 &1735037761
 Rigidbody2D:
   serializedVersion: 4
@@ -2700,6 +2703,8 @@ MonoBehaviour:
   - {fileID: 2221898611877471574, guid: 5820432ec23fcad48ac186c1bce59f8f, type: 3}
   - {fileID: 4185643543342691424, guid: eab25801dcd9fec4c8c4e237c0ed2773, type: 3}
   objects: []
+  currentRooms:
+  - {fileID: 1093695785}
   objectsMinDistance: 5
   objectsMaxDistance: 10
   objectsMinY: -1.4
@@ -2710,8 +2715,6 @@ MonoBehaviour:
   - {fileID: 5270831802561824700, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
   availableHouses:
   - {fileID: 5863381276688362843, guid: cc23a90592e2140b1987ea8edb548224, type: 3}
-  currentRooms:
-  - {fileID: 1093695785}
   screenWidthInPoints: 0
 --- !u!95 &1735037766
 Animator:

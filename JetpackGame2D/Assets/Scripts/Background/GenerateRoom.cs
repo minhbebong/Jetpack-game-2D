@@ -7,7 +7,7 @@ public class GenerateRoom : MonoBehaviour
 {
     public GameObject[] availableObjects;
     public List<GameObject> objects;
-    
+    public List<GameObject> currentRooms;
 
     public float objectsMinDistance = 5.0f;
     public float objectsMaxDistance = 10.0f;
@@ -21,10 +21,9 @@ public class GenerateRoom : MonoBehaviour
 
     public GameObject[] availableRooms;
     public GameObject[] availableHouses;
-    public List<GameObject> currentRooms;
     public float screenWidthInPoints;
 
-  
+
 
     void Start()
     {
