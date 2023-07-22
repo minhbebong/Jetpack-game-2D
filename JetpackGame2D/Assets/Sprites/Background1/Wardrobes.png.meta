@@ -3,7 +3,7 @@ guid: 5934240172f56c44bb796f5054bcc038
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -259,10 +258,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wardrobes_0: -983178182
-      Wardrobes_1: -1061554105
-      Wardrobes_2: 2080793382
       Wardrobes_3: 1503877656
+      Wardrobes_1: -1061554105
+      Wardrobes_0: -983178182
+      Wardrobes_2: 2080793382
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

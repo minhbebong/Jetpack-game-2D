@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] public GameObject PauseMenuPanel;
-
+    public ParticleSystem jetpack;
+    public AudioClip coinCollectSound;
+    public AudioSource jetpackAudio;
+    public AudioSource footstepsAudio;
     public void Pause()
     {
         PauseMenuPanel.SetActive(true);
@@ -25,5 +28,9 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("JetpackGame");
     }
 
-
+    public void Home()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Start Scene");
+    }
 }

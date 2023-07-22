@@ -9,7 +9,6 @@ using TMPro;
 
 public class MouseController : MonoBehaviour
 {
-
     public Transform groundCheckTransform;
     private bool isGrounded;
     public LayerMask groundCheckLayerMask;
@@ -24,23 +23,28 @@ public class MouseController : MonoBehaviour
     public float forwardMovementSpeed = 3.0f;
     public float jetpackForce = 75f;
     private Rigidbody2D playerbody;
-    private bool isDead = false;
+    
     public TextManager textManager;
     public ParallaxController parallax;
     public Button restartButton;
 
+    private bool isDead = false;
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
-
+    public AudioClip explosion;
     public Button resButton;
-
-
-
-
-
-    public void RestartGame()
+    public GameObject explosionPrefab;
+    public GameObject[] playerPrefabs;
+    int characterIndex;
+    public static Vector2 lastCheckPointPos = new Vector2(-3, 0);
+   
+        public void RestartGame()
     {
+        // D?ng ï¿½m thanh jetpack
+        jetpackAudio.Pause();
+        // D?ng ï¿½m thanh footsteps
+        footstepsAudio.Pause();
         SceneManager.LoadScene("JetpackGame");
     }
     void CollectCoin(Collider2D coinCollider)
@@ -78,28 +82,34 @@ public class MouseController : MonoBehaviour
         isDead = true;
         mouseAnimator.SetBool("isDead", true);
 
-        // D?ng âm thanh jetpack
-        jetpackAudio.Stop();
-        // D?ng âm thanh footsteps
-        footstepsAudio.Stop();
+        // D?ng ï¿½m thanh jetpack
+        jetpackAudio.Pause();
+        // D?ng ï¿½m thanh footsteps
+        footstepsAudio.Pause();
 
     }
     void HitByMissile(Collider2D missileCollider)
     {
         if (!isDead)
         {
-            //  missileCollider.gameObject.GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(explosion, transform.position);
 
         }
         isDead = true;
         mouseAnimator.SetBool("isDead", true);
 
-        // D?ng âm thanh jetpack
-        jetpackAudio.Stop();
-        // D?ng âm thanh footsteps
-        footstepsAudio.Stop();
-    }
+        jetpackAudio.Pause();
+        
+        footstepsAudio.Pause();
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            
 
+        }
+        
+    }
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +130,7 @@ public class MouseController : MonoBehaviour
         //Vector3 pos = transform.position;
         //pos.x += forwardMovementSpeed * Time.deltaTime;
         //transform.position = pos;
+        parallax.offset = transform.position.x;
         bool jetpackActive = Input.GetButton("Fire1");
 
         jetpackActive = jetpackActive && !isDead;
@@ -174,12 +185,12 @@ public class MouseController : MonoBehaviour
 
     void AdjustFootstepsAndJetpackSound(bool jetpackActive)
     {
-        footstepsAudio.enabled = !isDead && isGrounded;
+        footstepsAudio.enabled = !isDead && !isGrounded;
         jetpackAudio.enabled = !isDead && !isGrounded;
-        // N?u nhân v?t ?ã ch?t, d?ng âm thanh jetpack
+        // N?u nhï¿½n v?t ?ï¿½ ch?t, d?ng ï¿½m thanh jetpack
         if (isDead)
         {
-            jetpackAudio.Stop();
+            jetpackAudio.Pause();
         }
         else
         {

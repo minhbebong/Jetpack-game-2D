@@ -7,7 +7,7 @@ public class GenerateRoom : MonoBehaviour
 {
     public GameObject[] availableObjects;
     public List<GameObject> objects;
-    
+    public List<GameObject> currentRooms;
 
     public float objectsMinDistance = 5.0f;
     public float objectsMaxDistance = 10.0f;
@@ -20,9 +20,9 @@ public class GenerateRoom : MonoBehaviour
 
 
     public GameObject[] availableRooms;
-    public List<GameObject> currentRooms;
+    
     public float screenWidthInPoints;
-    int countRoom = 0; 
+
 
 
     void Start()
@@ -34,6 +34,8 @@ public class GenerateRoom : MonoBehaviour
     void FixedUpdate()
     {
         GenerateRoomIfRequired();
+
+        GenerateObjectsIfRequired();
     }
 
     void AddRoom(float farhtestRoomEndX)
@@ -112,32 +114,41 @@ public class GenerateRoom : MonoBehaviour
 
     void GenerateObjectsIfRequired()
     {
-        
         float playerX = transform.position.x;
         float removeObjectsX = playerX - screenWidthInPoints;
         float addObjectX = playerX + screenWidthInPoints;
         float farthestObjectX = 0;
-        
+
         List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in objects)
         {
-            
-            float objX = obj.transform.position.x;
-            
-            farthestObjectX = Mathf.Max(farthestObjectX, objX);
-            
-            if (objX < removeObjectsX)
+            if (obj != null && obj.activeSelf) // Ki?m tra xem ??i t??ng c� t?n t?i v� c�n ?ang ho?t ??ng kh�ng
             {
+                float objX = obj.transform.position.x;
+                farthestObjectX = Mathf.Max(farthestObjectX, objX);
+
+                if (objX < removeObjectsX)
+                {
+                    objectsToRemove.Add(obj);
+                }
+            }
+            else
+            {
+                // N?u ??i t??ng ?� b? h?y ho?c kh�ng ho?t ??ng, h�y lo?i b? kh?i danh s�ch
                 objectsToRemove.Add(obj);
             }
         }
-        
+
         foreach (var obj in objectsToRemove)
         {
             objects.Remove(obj);
-            Destroy(obj);
+            // S? d?ng Destroy() ch? cho c�c GameObject t?n t?i trong th?i gian ch?y
+            if (obj != null && obj is GameObject)
+            {
+                Destroy(obj);
+            }
         }
-       
+
         if (farthestObjectX < addObjectX)
         {
             AddObject(farthestObjectX);
