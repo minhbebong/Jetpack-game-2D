@@ -20,7 +20,7 @@ public class GenerateRoom : MonoBehaviour
 
 
     public GameObject[] availableRooms;
-    public GameObject[] availableHouses;
+    
     public float screenWidthInPoints;
 
 
