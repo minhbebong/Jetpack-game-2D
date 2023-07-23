@@ -16,7 +16,7 @@ public class MouseController : MonoBehaviour
 
     public ParticleSystem jetpack;
 
-    public TextMeshProUGUI coinsCollectedLabel;
+  
 
     private uint coins = 0;
 
@@ -49,8 +49,7 @@ public class MouseController : MonoBehaviour
     }
     void CollectCoin(Collider2D coinCollider)
     {
-        coins++;
-        coinsCollectedLabel.text = coins.ToString();
+        textManager.IncreaseScore();
         Destroy(coinCollider.gameObject);
         AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
