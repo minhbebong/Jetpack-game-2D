@@ -18,12 +18,9 @@ public class GenerateRoom : MonoBehaviour
     public float objectsMinRotation = -45.0f;
     public float objectsMaxRotation = 45.0f;
 
-
     public GameObject[] availableRooms;
-    
+
     public float screenWidthInPoints;
-
-
 
     void Start()
     {
@@ -34,34 +31,28 @@ public class GenerateRoom : MonoBehaviour
     void FixedUpdate()
     {
         GenerateRoomIfRequired();
-
         GenerateObjectsIfRequired();
     }
 
     void AddRoom(float farhtestRoomEndX)
     {
         int randomRoomIndex = Random.Range(0, availableRooms.Length);
-
         GameObject room = (GameObject)Instantiate(availableRooms[randomRoomIndex]);
-
         float roomWidth = room.transform.Find("floor").localScale.x;
-
         float roomCenter = farhtestRoomEndX + roomWidth * 0.5f;
-
         room.transform.position = new Vector3(roomCenter, 0, 0);
-
         currentRooms.Add(room);
     }
 
     void GenerateRoomIfRequired()
     {
         List<GameObject> roomsToRemove = new List<GameObject>();
-
         bool addRooms = true;
         float playerX = transform.position.x;
         float removeRoomX = playerX - screenWidthInPoints;
         float addRoomX = playerX + screenWidthInPoints;
         float farthestRoomEndX = 0;
+
         foreach (var room in currentRooms)
         {
             float roomWidth = room.transform.Find("floor").localScale.x;
@@ -97,19 +88,27 @@ public class GenerateRoom : MonoBehaviour
 
     void AddObject(float lastObjectX)
     {
-        //1
+        if (availableObjects.Length == 0)
+        {
+            Debug.LogWarning("Không có đối tượng trong mảng availableObjects.");
+            return;
+        }
+
         int randomIndex = Random.Range(0, availableObjects.Length);
-        //2
-        GameObject obj = (GameObject)Instantiate(availableObjects[randomIndex]);
-        //3
-        float objectPositionX = lastObjectX + Random.Range(objectsMinDistance, objectsMaxDistance);
-        float randomY = Random.Range(objectsMinY, objectsMaxY);
-        obj.transform.position = new Vector3(objectPositionX, randomY, 0);
-        //4
-        float rotation = Random.Range(objectsMinRotation, objectsMaxRotation);
-        obj.transform.rotation = Quaternion.Euler(Vector3.forward * rotation);
-        //5
-        objects.Add(obj);
+        if (randomIndex >= 0 && randomIndex < availableObjects.Length)
+        {
+            GameObject obj = Instantiate(availableObjects[randomIndex]);
+            float objectPositionX = lastObjectX + Random.Range(objectsMinDistance, objectsMaxDistance);
+            float randomY = Random.Range(objectsMinY, objectsMaxY);
+            obj.transform.position = new Vector3(objectPositionX, randomY, 0);
+            float rotation = Random.Range(objectsMinRotation, objectsMaxRotation);
+            obj.transform.rotation = Quaternion.Euler(Vector3.forward * rotation);
+            objects.Add(obj);
+        }
+        else
+        {
+            Debug.LogWarning("randomIndex không hợp lệ khi lựa chọn availableObjects.");
+        }
     }
 
     void GenerateObjectsIfRequired()
@@ -122,7 +121,7 @@ public class GenerateRoom : MonoBehaviour
         List<GameObject> objectsToRemove = new List<GameObject>();
         foreach (var obj in objects)
         {
-            if (obj != null && obj.activeSelf) // Ki?m tra xem ??i t??ng c� t?n t?i v� c�n ?ang ho?t ??ng kh�ng
+            if (obj != null && obj.activeSelf)
             {
                 float objX = obj.transform.position.x;
                 farthestObjectX = Mathf.Max(farthestObjectX, objX);
@@ -134,7 +133,6 @@ public class GenerateRoom : MonoBehaviour
             }
             else
             {
-                // N?u ??i t??ng ?� b? h?y ho?c kh�ng ho?t ??ng, h�y lo?i b? kh?i danh s�ch
                 objectsToRemove.Add(obj);
             }
         }
@@ -142,7 +140,6 @@ public class GenerateRoom : MonoBehaviour
         foreach (var obj in objectsToRemove)
         {
             objects.Remove(obj);
-            // S? d?ng Destroy() ch? cho c�c GameObject t?n t?i trong th?i gian ch?y
             if (obj != null && obj is GameObject)
             {
                 Destroy(obj);
