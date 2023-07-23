@@ -40,3 +40,29 @@
 
 - Tại project chung, có thể tạo thêm folders khác như _Models, Audio, Cameras..._ để hỗ trợ.
 - _Lưu ý: không tuỳ ý tạo các file đơn lẻ, các files phải được wrap lại bên trong 1 folder cụ thể._
+
+## Hướng dẫn build game về máy android.
+
+**B1. Vào phần file chọn Build Settings**
+<img src="./Demo/1.png" width = "45%"></img>
+
+**B2. Chọn Player Seetings**
+<img src="./Demo/2.png" width = "45%"></img>
+
+**B3. Tạo Keystore mới . Chọn Publishing Settings -> KeystoreManager -> Key store -> Create new**
+<img src="./Demo/3.png" width = "45%"></img>
+
+**B4. Chọn Resolution and Prentation**
+<img src="./Demo/4.png" width = "45%"></img>
+
+**B5. Nhập lại password vừa tạo vào Publishing Settings**
+<img src="./Demo/5.png" width = "45%"></img>
+
+**B6. Ở màn Build Setting. Sắp xếp lại Scenes in Build . Chọn nút Build ở phía dưới bên phải**
+<img src="./Demo/6.png" width = "45%"></img>
+
+**Tài liệu tham khảo**
+
+- [Cách tạo Android Keystore Manager](https://docs.unity3d.com/2020.2/Documentation/Manual/android-keystore-manager.html)
+
+-[Các bướcBUILD GAME UNITY-ANDROID](https://unity3d1.blogspot.com/2015/07/huong-dan-build-game-unity-ra-android.html)
