@@ -43,23 +43,35 @@
 
 ## Hướng dẫn build game về máy android.
 
-**B1. Vào phần file chọn Build Settings**
-<img src="./Demo/1.png"></img>
-
 **B2. Chọn Player Seetings**
-<img src="./Demo/2.png"></img>
+
+<p align="center">
+  <img src="./Demo/2.png">
+</p>
 
 **B3. Tạo Keystore mới . Chọn Publishing Settings -> KeystoreManager -> Key store -> Create new**
-<img src="./Demo/3.png" ></img>
+
+<p align="center">
+  <img src="./Demo/3.png">
+</p>
 
 **B4. Chọn Resolution and Prentation**
-<img src="./Demo/4.png"></img>
+
+<p align="center">
+  <img src="./Demo/4.png">
+</p>
 
 **B5. Nhập lại password vừa tạo vào Publishing Settings**
-<img src="./Demo/5.png" ></img>
+
+<p align="center">
+  <img src="./Demo/5.png">
+</p>
 
 **B6. Ở màn Build Setting. Sắp xếp lại Scenes in Build . Chọn nút Build ở phía dưới bên phải**
-<img src="./Demo/6.png"></img>
+
+<p align="center">
+  <img src="./Demo/6.png">
+</p>
 
 **Tài liệu tham khảo**
 
