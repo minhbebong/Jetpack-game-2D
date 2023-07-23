@@ -645,6 +645,7 @@ MonoBehaviour:
   coinCollectSound: {fileID: 0}
   jetpackAudio: {fileID: 0}
   footstepsAudio: {fileID: 0}
+  textManager: {fileID: 0}
 --- !u!4 &341905295
 Transform:
   m_ObjectHideFlags: 0
@@ -689,10 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e59028900e5f14b9719736b7b62ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
-  poolSize: 10
-  player: {fileID: 1735037759}
-  spawnInterval: 3
+  laserPrefabs: {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
 --- !u!4 &476420577
 Transform:
   m_ObjectHideFlags: 0

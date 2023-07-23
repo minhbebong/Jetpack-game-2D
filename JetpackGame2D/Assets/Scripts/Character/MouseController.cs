@@ -50,7 +50,8 @@ public class MouseController : MonoBehaviour
     void CollectCoin(Collider2D coinCollider)
     {
         textManager.IncreaseScore();
-        Destroy(coinCollider.gameObject);
+        //Destroy(coinCollider.gameObject);
+        coinCollider.gameObject.SetActive(false);
         AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 

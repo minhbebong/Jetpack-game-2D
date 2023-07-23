@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     public AudioClip coinCollectSound;
     public AudioSource jetpackAudio;
     public AudioSource footstepsAudio;
+    public TextManager textManager;
+
     public void Pause()
     {
         PauseMenuPanel.SetActive(true);
@@ -24,7 +26,9 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
+        textManager = FindObjectOfType<TextManager>();
         Time.timeScale = 1f;
+        textManager.score = 0;
         SceneManager.LoadScene("JetpackGame");
     }
 
