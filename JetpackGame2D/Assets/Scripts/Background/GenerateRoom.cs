@@ -75,7 +75,7 @@ public class GenerateRoom : MonoBehaviour
         foreach (var room in roomsToRemove)
         {
             currentRooms.Remove(room);
-            Destroy(room);
+            room.SetActive(false);
         }
 
         if (addRooms)
@@ -142,7 +142,8 @@ public class GenerateRoom : MonoBehaviour
             objects.Remove(obj);
             if (obj != null && obj is GameObject)
             {
-                Destroy(obj);
+                //Destroy(obj)
+                obj.SetActive(false);
             }
         }
 
