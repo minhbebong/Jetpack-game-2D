@@ -44,25 +44,25 @@
 ## Hướng dẫn build game về máy android.
 
 **B1. Vào phần file chọn Build Settings**
-<img src="./Demo/1.png" width = "45%"></img>
+<img src="./Demo/1.png"></img>
 
 **B2. Chọn Player Seetings**
-<img src="./Demo/2.png" width = "45%"></img>
+<img src="./Demo/2.png"></img>
 
 **B3. Tạo Keystore mới . Chọn Publishing Settings -> KeystoreManager -> Key store -> Create new**
-<img src="./Demo/3.png" width = "45%"></img>
+<img src="./Demo/3.png" ></img>
 
 **B4. Chọn Resolution and Prentation**
-<img src="./Demo/4.png" width = "45%"></img>
+<img src="./Demo/4.png"></img>
 
 **B5. Nhập lại password vừa tạo vào Publishing Settings**
-<img src="./Demo/5.png" width = "45%"></img>
+<img src="./Demo/5.png" ></img>
 
 **B6. Ở màn Build Setting. Sắp xếp lại Scenes in Build . Chọn nút Build ở phía dưới bên phải**
-<img src="./Demo/6.png" width = "45%"></img>
+<img src="./Demo/6.png"></img>
 
 **Tài liệu tham khảo**
 
 - [Cách tạo Android Keystore Manager](https://docs.unity3d.com/2020.2/Documentation/Manual/android-keystore-manager.html)
 
--[Các bướcBUILD GAME UNITY-ANDROID](https://unity3d1.blogspot.com/2015/07/huong-dan-build-game-unity-ra-android.html)
+- [Các bướcBUILD GAME UNITY-ANDROID](https://unity3d1.blogspot.com/2015/07/huong-dan-build-game-unity-ra-android.html)
