@@ -43,6 +43,12 @@
 
 ## Hướng dẫn build game về máy android.
 
+**B1. Vào phần file chọn Build Settings**
+
+<p align="center">
+  <img src="./Demo/1.png">
+</p>
+
 **B2. Chọn Player Seetings**
 
 <p align="center">
