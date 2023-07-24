@@ -41,6 +41,7 @@ public class MouseController : MonoBehaviour
    
         public void RestartGame()
     {
+        DataPersistenceManager.instance.NewGame();
         // D?ng �m thanh jetpack
         jetpackAudio.Pause();
         // D?ng �m thanh footsteps
