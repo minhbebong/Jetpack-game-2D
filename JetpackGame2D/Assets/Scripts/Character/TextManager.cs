@@ -38,4 +38,9 @@ public class TextManager : MonoBehaviour,IDataPersistence
     {
         textcoin.text = "" + score;
     }
+    public void ResetScore()
+    {
+        score = 0;
+        textcoin.text = score.ToString();
+    }
 }

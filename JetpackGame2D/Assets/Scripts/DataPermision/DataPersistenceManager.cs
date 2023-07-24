@@ -60,6 +60,11 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+        if (gameData != null)
+        {
+            gameData.deathCount  = 0;
+        }
+        
     }
 
     public void LoadGame()
