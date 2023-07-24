@@ -41,6 +41,7 @@ public class MouseController : MonoBehaviour
    
         public void RestartGame()
     {
+        DataPersistenceManager.instance.NewGame();
         // D?ng �m thanh jetpack
         jetpackAudio.Pause();
         // D?ng �m thanh footsteps
@@ -50,7 +51,8 @@ public class MouseController : MonoBehaviour
     void CollectCoin(Collider2D coinCollider)
     {
         textManager.IncreaseScore();
-        Destroy(coinCollider.gameObject);
+        //Destroy(coinCollider.gameObject);
+        coinCollider.gameObject.SetActive(false);
         AudioSource.PlayClipAtPoint(coinCollectSound, transform.position);
     }
 
