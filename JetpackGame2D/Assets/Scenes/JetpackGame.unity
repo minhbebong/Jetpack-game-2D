@@ -620,51 +620,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &476420575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 476420577}
-  - component: {fileID: 476420576}
-  m_Layer: 0
-  m_Name: ObjectPoolingLaser
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &476420576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476420575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2e59028900e5f14b9719736b7b62ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserPrefabs: {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
---- !u!4 &476420577
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476420575}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -494.95944, y: 734.5827, z: -13.736438}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &501251313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,57 +1127,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3162449590001245693, guid: e511e5d966965ce439051f9a2e0dcb5d, type: 3}
   m_PrefabInstance: {fileID: 3162449591092831444}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1166821322
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1166821324}
-  - component: {fileID: 1166821323}
-  m_Layer: 0
-  m_Name: ObjectPoolingCoin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1166821323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166821322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b03d24b838205447a5203f65234d18a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefabs:
-  - {fileID: 6673145182816615496, guid: d0801ec95db42ee47b5592bc6cbd7526, type: 3}
-  - {fileID: 4854017614959054634, guid: feb0449a8d5759d44aa84d0d3c1e9897, type: 3}
-  - {fileID: 4185643543342691424, guid: eab25801dcd9fec4c8c4e237c0ed2773, type: 3}
-  - {fileID: 2221898611877471574, guid: 5820432ec23fcad48ac186c1bce59f8f, type: 3}
-  poolSizePerCoin: 3
-  spawnInterval: 3
---- !u!4 &1166821324
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166821322}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -494.95944, y: 734.5827, z: -13.736438}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180962299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,6 +2849,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableObjects:
   - {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
+  - {fileID: 6673145182816615496, guid: d0801ec95db42ee47b5592bc6cbd7526, type: 3}
+  - {fileID: 4185643543342691424, guid: eab25801dcd9fec4c8c4e237c0ed2773, type: 3}
+  - {fileID: 2221898611877471574, guid: 5820432ec23fcad48ac186c1bce59f8f, type: 3}
+  - {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
+  - {fileID: 6310770187880985771, guid: 7b41c7ab1ed521b44a1a9c10136159e3, type: 3}
+  - {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
+  - {fileID: 4854017614959054634, guid: feb0449a8d5759d44aa84d0d3c1e9897, type: 3}
   objects: []
   currentRooms:
   - {fileID: 1093695785}

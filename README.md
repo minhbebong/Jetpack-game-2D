@@ -1,5 +1,11 @@
 # PRU211m - Jetpack-game-2D - Unity
 
+## Thành viên nhóm:
+
+- [Nguyễn Đình Minh - HE151002](https://www.facebook.com/minh.nguyendinh.961/)
+- [Phan Nguyễn Đăng Huy - HE153012](https://www.facebook.com/co.lethoi.961)
+- [Đỗ Hồng Quân - HE151315](https://www.facebook.com/hong.quan.pass)
+
 ## Hướng dẫn sử dụng git cho repo chung
 
 - **Clone this repo** --> `git clone https://github.com/minhbebong/Jetpack-game-2D.git`
@@ -18,7 +24,14 @@
 
 ## Hướng dẫn sử dụng các folder/file trong dự án chung
 
-**1. Các quy định về folders/files chung cần lưu ý**
+**1.Phiên bản Unity editor**
+
+- Project nhóm sử dụng phiên bản editor version 2021.3.25f1.
+
+<p align="center">
+  <img src="./Demo/7.png">
+</p>
+**2. Các quy định về folders/files chung cần lưu ý**
 
 - Thư mục `Animations`:
   - Các file _Animation_ phải được wrap bởi thư mục cha trùng tên với character hiện tại.
@@ -36,7 +49,7 @@
 - Folder `Audio`:
   - Chứa các file âm thanh của game .
 
-**2. Quy định việc tạo các folder/file mới**
+**3. Quy định việc tạo các folder/file mới**
 
 - Tại project chung, có thể tạo thêm folders khác như _Models, Audio, Cameras..._ để hỗ trợ.
 - _Lưu ý: không tuỳ ý tạo các file đơn lẻ, các files phải được wrap lại bên trong 1 folder cụ thể._
@@ -78,6 +91,10 @@
 <p align="center">
   <img src="./Demo/6.png">
 </p>
+
+## Game đã buid android.
+
+- [JetPack version 1]()
 
 **Tài liệu tham khảo**
 
