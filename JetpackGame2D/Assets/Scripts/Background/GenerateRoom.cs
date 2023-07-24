@@ -142,8 +142,8 @@ public class GenerateRoom : MonoBehaviour
             objects.Remove(obj);
             if (obj != null && obj is GameObject)
             {
-                //Destroy(obj)
-                obj.SetActive(false);
+                Destroy(obj);
+                //obj.SetActive(false);
             }
         }
 
