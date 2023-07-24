@@ -27,12 +27,12 @@ public class TextManager : MonoBehaviour,IDataPersistence
 
     public void LoadData(GameData data)
     {
-        this.score = data.coin;
+        this.score = data.deathCount;
     }
 
     public void SaveData(GameData data)
     {
-        data.coin = this.score;
+        data.deathCount = this.score;
     }
     public void Update()
     {
