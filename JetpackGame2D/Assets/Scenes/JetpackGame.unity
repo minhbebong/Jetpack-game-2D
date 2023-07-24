@@ -2694,7 +2694,6 @@ MonoBehaviour:
   jetpack: {fileID: 1765151838}
   forwardMovementSpeed: 7
   jetpackForce: 40
-  textcoin: {fileID: 1480488000}
   textManager: {fileID: 0}
   parallax: {fileID: 853299650}
   coinCollectSound: {fileID: 8300000, guid: 6ce0f16f5f3be8544bc981f9119a2514, type: 3}
@@ -2944,7 +2943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b056a40150c4d4724a78045fea83ddea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableObjects: []
+  availableObjects:
+  - {fileID: 4468454853600922782, guid: 6090ca8d08c0dbb49bcf49a0cf58e726, type: 3}
   objects: []
   currentRooms:
   - {fileID: 1093695785}
