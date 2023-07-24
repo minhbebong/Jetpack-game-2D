@@ -26,7 +26,7 @@ public class MouseController : MonoBehaviour
     
     public TextManager textManager;
     public ParallaxController parallax;
-    public Button restartButton;
+   
 
     private bool isDead = false;
     public AudioClip coinCollectSound;
@@ -35,19 +35,24 @@ public class MouseController : MonoBehaviour
     public AudioClip explosion;
     public Button resButton;
     public GameObject explosionPrefab;
-    public GameObject[] playerPrefabs;
+    
+    
     int characterIndex;
     public static Vector2 lastCheckPointPos = new Vector2(-3, 0);
    
         public void RestartGame()
     {
-        DataPersistenceManager.instance.NewGame();
+
+        textManager.ResetScore();
         // D?ng �m thanh jetpack
         jetpackAudio.Pause();
         // D?ng �m thanh footsteps
         footstepsAudio.Pause();
+        DataPersistenceManager.instance.NewGame();
         SceneManager.LoadScene("JetpackGame");
+        
     }
+    
     void CollectCoin(Collider2D coinCollider)
     {
         textManager.IncreaseScore();
@@ -114,16 +119,18 @@ public class MouseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         playerbody = GetComponent<Rigidbody2D>();
         textManager = FindObjectOfType<TextManager>();
         mouseAnimator = GetComponent<Animator>();
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+       
     }
 
     private void FixedUpdate()

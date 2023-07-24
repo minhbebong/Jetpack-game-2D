@@ -2694,18 +2694,15 @@ MonoBehaviour:
   jetpack: {fileID: 1765151838}
   forwardMovementSpeed: 7
   jetpackForce: 40
+  textcoin: {fileID: 1480488000}
   textManager: {fileID: 0}
   parallax: {fileID: 853299650}
-  restartButton: {fileID: 0}
   coinCollectSound: {fileID: 8300000, guid: 6ce0f16f5f3be8544bc981f9119a2514, type: 3}
   jetpackAudio: {fileID: 1735037763}
   footstepsAudio: {fileID: 1735037764}
   explosion: {fileID: 8300000, guid: 8ebcbc42ab8b04b739096b0b4f3bbd23, type: 3}
   resButton: {fileID: 2031416019}
   explosionPrefab: {fileID: 2164529177619330190, guid: 981e8a396fc8b4148b3f89fc25419bc1, type: 3}
-  playerPrefabs:
-  - {fileID: 1724184581521701220, guid: 044f5e0610f164732a4f41dfb9fbe66c, type: 3}
-  - {fileID: 30275252287300550, guid: d7c82c0e6b1f34d1b9a2d381dbda29e2, type: 3}
 --- !u!50 &1735037761
 Rigidbody2D:
   serializedVersion: 4
